@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://prototype.kore.com/#/admin/user-management -->
+<html data-ng-app="app" ng-strict-di="" class="ng-scope">
+        <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style type="text/css">
+[uib-typeahead-popup].dropdown-menu {
+	display: block;
+}
+</style>
+        <style type="text/css">
+.uib-time input {
+	width: 50px;
+}
+</style>
+        <style type="text/css">
+.uib-datepicker .uib-title {
+	width: 100%;
+}
+.uib-day button, .uib-month button, .uib-year button {
+	min-width: 100%;
+}
+.uib-datepicker-popup.dropdown-menu {
+	display: block;
+}
+.uib-button-bar {
+	padding: 10px 9px 2px;
+}
+</style>
+        <style type="text/css">
+.ng-animate.item:not(.left):not(.right) {
+	-webkit-transition: 0s ease-in-out left;
+	transition: 0s ease-in-out left
+}
+</style>
+        <style type="text/css">
+@charset "UTF-8";
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+	display: none !important;
+}
+ng\:form {
+	display: block;
+}
+.ng-animate-shim {
+	visibility: hidden;
+}
+.ng-anchor {
+	position: absolute;
+}
+</style>
+        <!--<base href="/">-->
+        <base href=".">
+        <meta name="description" content="">
+        <meta http-equiv="cache-control" content="no-cache">
+
+        <!-- ensure proper rendering and touch zooming -->
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="http://prototype.kore.com/content/images/icons/apple-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="http://prototype.kore.com/content/images/icons/apple-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="http://prototype.kore.com/content/images/icons/apple-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="http://prototype.kore.com/content/images/icons/apple-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="http://prototype.kore.com/content/images/icons/apple-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="http://prototype.kore.com/content/images/icons/apple-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="http://prototype.kore.com/content/images/icons/apple-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="http://prototype.kore.com/content/images/icons/apple-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="http://prototype.kore.com/content/images/icons/apple-icon-180x180.png">
+        <link rel="icon" type="image/png" sizes="192x192" href="http://prototype.kore.com/content/images/icons/android-icon-192x192.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="http://prototype.kore.com/content/images/icons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="http://prototype.kore.com/content/images/icons/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="http://prototype.kore.com/content/images/icons/favicon-16x16.png">
+        <link rel="manifest" href="http://prototype.kore.com/content/images/icons/manifest.json">
+        <meta name="msapplication-TileColor" content="#ffffff">
+        <meta name="msapplication-TileImage" content="content/images/icons/ms-icon-144x144.png">
+        <meta name="theme-color" content="#ffffff">
+        <link rel="shortcut icon" type="image/x-icon" href="http://prototype.kore.com/content/images/favicon/favicon.ico">
+        <title>Kore Prototype 1.2.3</title>
+        <style>
+/* This helps the ng-show/ng-hide animations start at the right place. */
+            /* Since Angular has this but needs to load, this gives us the class early. */
+.ng-hide {
+	display: none !important;
+}
+</style>
+
+        <!-- Fonts -->
+        <link rel="stylesheet" type="text/css" href="./Kore Prototype 1.2.3_files/css">
+        <link rel="stylesheet" href="./Kore Prototype 1.2.3_files/vendor.css">
+        <link rel="stylesheet" href="./Kore Prototype 1.2.3_files/app.css">
+        </head>
+        <body>
+
+<!-- Main Layout --> 
+<!-- ngInclude: 'app/layout/shell.html' -->
+<div >
+          <div> 
+    
+    <!-- Splash -->
+    <div id="splash" class="full-page"> 
+              
+              <!-- Splash Screen -->
+              <div> 
+        
+        <!-- Brand Elements -->
+        <div class="line-circle"></div>
+        <div class="dotted-circle"></div>
+        
+        <!-- Loading Wrapper -->
+        <div class="loading-wrapper">
+                  <div class="brand-icon"></div>
+                  <div class="loading-message"> 
+            <!-- ngIf: vm.isAuthenticated && !vm.admin --> 
+            <!-- ngIf: !vm.isAuthenticated && !vm.admin --> 
+            <!-- ngIf: vm.admin --><span>Preparing Enterprise Admin...</span><!-- end ngIf: vm.admin --> 
+          </div>
+                </div>
+      </div>
+            </div>
+    
+    <!-- Main Sidebar --> 
+    <!-- ngIf: vm.mainSidebar.template && vm.showLayout && vm.singleView == false --><!-- ngInclude: vm.mainSidebar.template -->
+    <div data-ng-if="vm.mainSidebar.template &amp;&amp; vm.showLayout &amp;&amp; vm.singleView == false" data-ng-include="vm.mainSidebar.template" data-ng-class="{&#39;active&#39;: vm.mainSidebar.visible == true,
+                        &#39;enterprise-admin&#39;: vm.admin == true}" id="main-sidebar" class="navigation active enterprise-admin" style="">
+              <div data-ng-controller="Navigation as vm" class="controller-wrapper ng-scope">
+        <div id="navigation"> 
+                  
+                  <!-- Hamburger Button -->
+                  <div class="navigation-header">Enterprise Administration</div>
+                  
+                  <!-- Menu Panel -->
+                  <div class="menu-panel">
+            <div data-ng-class="{&#39;active&#39;: vm.overlay == true}" class="navigation-overlay"></div>
+            
+            <!-- Panel List -->
+            <div suppress-scroll-x="true" wheel-propagation="true" class="panel-list-container ps-container ps-theme-default ps-active-y" data-ps-id="d0e25cd0-da65-23f7-86c3-f50571672b4a">
+                      <div ng-transclude="">
+                <ul class="panel-list ng-scope">
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#/admin">
+                            <div class="nav-menu-item-wrapper"> <span class="marker"><i class="fa fa-circle"></i></span> <span class="menu-text">Dashboard</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a data-ng-class="{&#39;active&#39;: vm.selectedMenu == &#39;/admin/user-management&#39;}" href="http://prototype.kore.com/#/admin/user-management" class="open-menu open active" style="">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">User Management</span> </div>
+                            </a>
+                    <ul class="sub-menu">
+                              <li> <a href="http://prototype.kore.com/#">
+                                <div class="nav-menu-item-wrapper"> <span class="menu-text">Manage Users</span> </div>
+                                </a> </li>
+                              <li> <a href="http://prototype.kore.com/#">
+                                <div class="nav-menu-item-wrapper"> <span class="menu-text">Groups &amp; DLs</span> </div>
+                                </a> </li>
+                              <li> <a href="http://prototype.kore.com/#">
+                                <div class="nav-menu-item-wrapper"> <span class="menu-text">Invitations</span> </div>
+                                </a> </li>
+                            </ul>
+                  </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Space Management</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Bot Management</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Security &amp; Control</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Analytics</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Compliance</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">Billing</span> </div>
+                            </a> </li>
+                          <li class="main-menu"> <a href="http://prototype.kore.com/#">
+                            <div class="nav-menu-item-wrapper"> <span class="menu-text">System Preferences</span> </div>
+                            </a> </li>
+                        </ul>
+              </div>
+                      <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+              </div>
+                      <div class="ps-scrollbar-y-rail" style="top: 0px; right: 4px; height: 536px;">
+                <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 524px;"></div>
+              </div>
+                    </div>
+            
+            <!-- Footer -->
+            <footer data-ng-class="{&#39;active&#39;: vm.profileMenuOpen == true}" class="profile-box-wrapper"> 
+                      
+                      <!-- Profile Box -->
+                      <div data-ng-click="vm.toggleProfileMenu()" class="item-listing"> 
+                
+                <!-- Item --> 
+                <!-- ngIf: vm.currentUser != null -->
+                <div data-ng-if="vm.currentUser != null" data-widget-profile-photo="" data-profile-id="vm.currentUser.id" class="item ng-scope ng-isolate-scope">
+                          <div data-ng-class="{&#39;group&#39;: plus &gt; 2}" class="profile-photo"> 
+                    
+                    <!-- No Avatar --> 
+                    <!-- ngIf: profile.image == false --> 
+                    
+                    <!-- Avatar --> 
+                    <!-- ngIf: profile.image == true -->
+                    <div data-ng-if="profile.image == true" class="fade-animation user-account avatar ng-scope" style="background-image: url(data/media/images/profiles/monica.png);"></div>
+                    <!-- end ngIf: profile.image == true --> 
+                    
+                    <!-- Status -->
+                    <div class="status  online"></div>
+                    
+                    <!-- ngIf: plus > 2 --> 
+                    
+                  </div>
+                        </div>
+                <!-- end ngIf: vm.currentUser != null --> 
+                
+                <!-- Details -->
+                <div class="details">
+                          <div class="title"> <span class="email ng-binding">monica@kore.com</span> </div>
+                        </div>
+                
+                <!-- Extras -->
+                <div class="extras"> <span data-ng-class="{&#39;open&#39;: vm.profileMenuOpen == true}" class="open-menu"></span> </div>
+              </div>
+                      
+                      <!-- Profile Info -->
+                      <div class="profile-info"> 
+                
+                <!-- Status Message -->
+                <input type="text" data-ng-model="vm.currentUser.statusMessage" data-ng-keypress="vm.changeStatusMessage($event)" class="status-message form-control ng-pristine ng-untouched ng-valid" placeholder="Update your status">
+                <div suppress-scroll-x="true" class="profile-info-scroll-wrapper ps-container ps-theme-default" data-ps-id="9a1d24e1-c02c-1918-b38d-fa66cc09be4d">
+                          <div ng-transclude=""> 
+                    
+                    <!-- Profile Statuses -->
+                    <ul class="profile-status ng-scope">
+                              <!-- ngRepeat: item in vm.statuses track by $index -->
+                              <li ng-repeat="item in vm.statuses track by $index" class="status-item ng-scope"> <a data-ng-class="{&#39;active&#39;: vm.currentUser.koreStatus == item}" data-ng-click="vm.changeStatus(item)" class="active"> <span class="profile-icon"><i class="status online">online</i> </span> <span class="menu-text ng-binding">online</span> 
+                                <!-- ngIf: vm.currentUser.koreStatus == item --><span data-ng-if="vm.currentUser.koreStatus == item" class="status-selected ng-scope"><i class="fa fa-fw fa-check"></i></span><!-- end ngIf: vm.currentUser.koreStatus == item --> 
+                                </a> </li>
+                              <!-- end ngRepeat: item in vm.statuses track by $index -->
+                              <li ng-repeat="item in vm.statuses track by $index" class="status-item ng-scope"> <a data-ng-class="{&#39;active&#39;: vm.currentUser.koreStatus == item}" data-ng-click="vm.changeStatus(item)"> <span class="profile-icon"><i class="status away">away</i> </span> <span class="menu-text ng-binding">away</span> 
+                                <!-- ngIf: vm.currentUser.koreStatus == item --> 
+                                </a> </li>
+                              <!-- end ngRepeat: item in vm.statuses track by $index -->
+                              <li ng-repeat="item in vm.statuses track by $index" class="status-item ng-scope"> <a data-ng-class="{&#39;active&#39;: vm.currentUser.koreStatus == item}" data-ng-click="vm.changeStatus(item)"> <span class="profile-icon"><i class="status busy">busy</i> </span> <span class="menu-text ng-binding">busy</span> 
+                                <!-- ngIf: vm.currentUser.koreStatus == item --> 
+                                </a> </li>
+                              <!-- end ngRepeat: item in vm.statuses track by $index -->
+                              <li ng-repeat="item in vm.statuses track by $index" class="status-item ng-scope"> <a data-ng-class="{&#39;active&#39;: vm.currentUser.koreStatus == item}" data-ng-click="vm.changeStatus(item)"> <span class="profile-icon"><i class="status stealth">stealth</i> </span> <span class="menu-text ng-binding">stealth</span> 
+                                <!-- ngIf: vm.currentUser.koreStatus == item --> 
+                                </a> </li>
+                              <!-- end ngRepeat: item in vm.statuses track by $index -->
+                            </ul>
+                    
+                    <!-- Profile actions -->
+                    <ul class="profile-actions ng-scope">
+                              <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-user"></i></span> <span class="menu-text">Account</span> </a> </li>
+                              <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-question-circle"></i></span> <span class="menu-text">Help</span> </a> </li>
+                              <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-users"></i></span> <span class="menu-text">Invite People</span> </a> </li>
+                              <li> <a ng-click="vm.accountSettings()"> <span class="profile-icon"><i class="fa fa-fw fa-sliders"></i></span> <span class="menu-text">Settings</span> </a> </li>
+                              <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-sitemap"></i></span> <span class="menu-text">Launch Flow Builder <i class="fa fa-fw fa-external-link external"></i></span> </a> </li>
+                              <li> <a data-ng-click="vm.logout()"> <span class="profile-icon"><i class="fa fa-fw fa-sign-out"></i></span> <span class="menu-text">Sign Out</span> </a> </li>
+                            </ul>
+                  </div>
+                          <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                    <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                  </div>
+                          <div class="ps-scrollbar-y-rail" style="top: 0px; right: 4px;">
+                    <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div>
+                  </div>
+                        </div>
+              </div>
+                    </footer>
+          </div>
+                </div>
+      </div>
+            </div>
+    <!-- end ngIf: vm.mainSidebar.template && vm.showLayout && vm.singleView == false --> 
+    
+    <!-- Main Content -->
+    <section data-ng-class="{&#39;single-view&#39;: vm.singleView == true, 
+                            &#39;enterprise-admin&#39;: vm.admin == true,
+                            &#39;sidebar-active&#39;: vm.mainSidebar.visible == true &amp;&amp; vm.singleView == false}" id="main-content" class="lg enterprise-admin sidebar-active"> 
+              
+              <!-- Main Header --> 
+              <!-- ngIf: vm.showLayout && vm.singleView == false --><!-- ngInclude: vm.header.template -->
+              <header data-ng-if="vm.showLayout &amp;&amp; vm.singleView == false" id="main-header" data-ng-include="vm.header.template" class="header"><!-- Header -->
+        <nav class="navbar ng-scope" role="navigation"> 
+                  
+                  <!-- Toggle -->
+                  <button data-change-layout="" content="navigation" class="btn navbar-btn btn-navigation active"><i class="fa fa-bars fa-lg"></i></button>
+                  
+                  <!-- Logo -->
+                  <div class="navbar-header pull-left"> <a class="navbar-brand" href="http://prototype.kore.com/#"><img src="./Kore Prototype 1.2.3_files/kore-logo.svg"></a> </div>
+                  
+                  <!-- Button panel -->
+                  <div class="button-panel btn-group pull-right">
+            <button type="button" data-ng-click="vm.openHelp()" class="btn"><i class="fa fa-fw fa-question-circle"></i></button>
+          </div>
+                </nav>
+      </header>
+              <!-- end ngIf: vm.showLayout && vm.singleView == false --> 
+              
+              <!-- main app view / Routing --> 
+              <!-- ngView:  -->
+              <div data-ng-view="" data-ng-class="{&#39;sidebar-active&#39;: vm.viewSidebar.visible == true}" id="view-content" class="lg ng-animate-disabled">
+        <div id="user-management" data-ng-controller="AdminUserManagement as vm" class="ng-scope"> 
+                  
+                  <!-- Scroll Wrapper -->
+                  <div refresh-scroll="true" class="scroll-wrapper ps-container ps-theme-default ps-active-y" data-ps-id="ec4e937f-edca-828a-62ab-d55925039f64">
+            <div ng-transclude=""> 
+                      
+                      <!-- Page Container -->
+                      <div class="container page-container top ng-scope"> 
+                
+                <!-- Page Title-->
+                <div class="page-title"> 
+                          
+                          <!-- Title -->
+                          <div class="wrapper pull-left valign">
+                    <div class="title">Manage Users</div>
+                    <div class="sub-title">Manage the user in your company</div>
+                  </div>
+                          
+                          <!-- Invite Button -->
+                          <div class="collapse-button pull-right valign">
+                    <button role="button" type="button" class="btn btn-primary" data-ng-click="vm.openModal()"> <span class="fa fa-plus fa-icon"></span> <span class="xxs">Invite</span> <span class="xs"> new users</span> </button>
+                  </div>
+                        </div>
+                
+                <!-- Section -->
+                <div class="row section-title pull-right">
+                          <div class="col-xs-12"> 
+                    
+                    <!-- Form -->
+                    <form class="navbar-search pull-right ng-pristine ng-valid">
+                              <div data-ng-class="{&#39;active&#39;: vm.searchActive}" class="search-bar"> <a data-ng-show="vm.searchActive" data-ng-click="vm.clearSearch()" class="valign btn btn-clear fa fa-times ng-hide"></a>
+                        <input data-ng-change="vm.searching()" data-ng-model="vm.search" ng-model-options="{debounce: 200}" type="text" class="form-control ng-pristine ng-untouched ng-valid" placeholder="Find people">
+                      </div>
+                            </form>
+                    
+                    <!-- Sort boxes -->
+                    <div class="group-box">
+                              <label for="sort" class="sort-title">Grouped by</label>
+                              <div class="dropdown carets">
+                        <select class="form-control">
+                                  <option label="None" value="None">None</option>
+                                  <option label="Department" value="Department">Department</option>
+                                  <option label="Status" value="Status">Status</option>
+                                  <option label="Role" value="Role">Role</option>
+                                </select>
+                      </div>
+                            </div>
+                    <div class="group-box">
+                              <label for="sort" class="sort-title">Sorted by</label>
+                              <div class="dropdown carets">
+                        <select class="form-control">
+                                  <option label="Last Name" value="Last Name">Last Name</option>
+                                  <option label="First Name" value="First Name">First Name</option>
+                                </select>
+                      </div>
+                            </div>
+                  </div>
+                        </div>
+                
+                <!-- Table -->
+                <table class="row user-management-table table-responsive table-striped">
+                          
+                          <!-- Table Options -->
+                          <caption class="table-options text-left">
+                  <a href="http://prototype.kore.com/#" class="select-all">Select all</a> <a href="http://prototype.kore.com/#" class="expand-all">Expand all</a>
+                  </caption>
+                          <tbody>
+                    <tr class="manage-item">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox1" value="option1">
+                                  <label for="checkbox1"></label>
+                                </div></td>
+                              <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                              <td class="col-xl title item-top item-collapse"><span class="name first-name">Kevin</span> <span class="name last-name">Bacon Jr.</span></td>
+                              <td class="col-xl position non-critical item-collapse">Marketing</td>
+                              <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                              <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    <tr class="manage-item">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox2" value="option2">
+                                  <label for="checkbox2"></label>
+                                </div></td>
+                              <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                              <td class="col-xl title item-top item-collapse"><span class="name first-name">Neo</span> <span class="name last-name"></span></td>
+                              <td class="col-xl position non-critical item-collapse">Marketing</td>
+                              <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Suspended</a></td>
+                              <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Primary Enterprise Admin</a></td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    <tr class="manage-item">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox3" value="option3">
+                                  <label for="checkbox3"></label>
+                                </div></td>
+                              <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                              <td class="col-xl title item-top item-collapse"><span class="name first-name">Anardo</span> <span class="name last-name">Cuello III</span></td>
+                              <td class="col-xl position non-critical item-collapse">Human Resources</td>
+                              <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Suspended</a></td>
+                              <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    <tr class="manage-item">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox4" value="option4">
+                                  <label for="checkbox4"></label>
+                                </div></td>
+                              <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                              <td class="col-xl title item-top item-collapse"><span class="name first-name">Kevin</span> <span class="name last-name">James of Queens</span></td>
+                              <td class="col-xl position non-critical item-collapse">Product Management</td>
+                              <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                              <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    <tr class="manage-item">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox5" value="option5">
+                                  <label for="checkbox5"></label>
+                                </div></td>
+                              <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                              <td class="col-xl title item-top item-collapse"><span class="name first-name">That</span> <span class="name last-name">one guy from home alone</span></td>
+                              <td class="col-xl position non-critical item-collapse">Marketing Department</td>
+                              <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                              <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Primary Enterprise User</a></td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                  </tbody>
+                        </table>
+                
+                <!-- Table Footer -->
+                <div class="row table-footer">
+                          <div class="col-sm-4 col-xs-12 show-pages pull-left text-xs-left">
+                    <div class="group-box">
+                              <label for="sort" class="sort-title">Show</label>
+                              <div class="dropdown carets">
+                        <select class="form-control">
+                                  <option label="10" value="10">10</option>
+                                  <option label="20" value="20">20</option>
+                                  <option label="50" selected="selected" value="50">50</option>
+                                </select>
+                      </div>
+                            </div>
+                  </div>
+                          
+                          <!-- Table Pagination -->
+                          <ul class="col-sm-8 col-xs-12 pagination table-pagination pull-right text-sm-right text-xs-center">
+                    <li><a href="http://prototype.kore.com/#"><span aria-hidden="true" class="fa fa-angle-double-left"></span></a></li>
+                    <li class="active"><a href="http://prototype.kore.com/#">1</a></li>
+                    <li><a href="http://prototype.kore.com/#">2</a></li>
+                    <li><a href="http://prototype.kore.com/#">3</a></li>
+                    <li class="disabled"><a href="http://prototype.kore.com/#">4</a></li>
+                    <li><a href="http://prototype.kore.com/#">5</a></li>
+                    <li><a href="http://prototype.kore.com/#" class="fa fa-angle-double-right"></a></li>
+                  </ul>
+                        </div>
+                
+                <!-- Section -->
+                <div class="row section section-border">
+                          <div class="col-xs-12">
+                    <div class="section-title">
+                              <div class="title">Unmanaged Users</div>
+                            </div>
+                    <p>There are <strong>54 users</strong> who are currently not being managed. <a href="http://prototype.kore.com/#">See users</a></p>
+                  </div>
+                        </div>
+                
+                <!-- Section -->
+                <div class="row section section-border">
+                          <div class="col-xs-12">
+                    <div class="section-title">
+                              <div class="title">Deleted Users</div>
+                            </div>
+                    <p>There are <strong>7 users</strong> who were deleted in the last 30 days. <a href="http://prototype.kore.com/#">See users</a></p>
+                  </div>
+                        </div>
+                
+                <!-- Table -->
+                <table class="row user-management-table table-responsive">
+                          
+                          <!-- Table Options -->
+                          <caption class="table-options text-left">
+                  <a href="http://prototype.kore.com/#" class="select-all">Select all</a> <a href="http://prototype.kore.com/#" class="expand-all">Expand all</a>
+                  </caption>
+                          <tbody>
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox6" value="option6">
+                                  <label for="checkbox6"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Design</td>
+                              <td class="col-md count item-collapse">4 people</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox7" value="option7">
+                                  <label for="checkbox7"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Development</td>
+                              <td class="col-md count item-collapse">6 people</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox8" value="option8">
+                                  <label for="checkbox8"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Executive</td>
+                              <td class="col-md count item-collapse">2 people</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox9" value="option9">
+                                  <label for="checkbox9"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Human Resources</td>
+                              <td class="col-md count item-collapse">1 person</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox10" value="option10">
+                                  <label for="checkbox10"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Marketing</td>
+                              <td class="col-md count item-collapse">2 people</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox11" value="option11">
+                                  <label for="checkbox11"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Product Management</td>
+                              <td class="col-md count item-collapse">1 person</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr class="accordion-toggle collapsed" data-toggle="collapse" data-target="#collapse1" aria-expanded="false">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox12" value="option12">
+                                  <label for="checkbox12"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Sales</td>
+                              <td class="col-md count item-collapse">44 people</td>
+                              <td class="options text-right"><button type="button" class="btn btn-expand"></button></td>
+                            </tr>
+                    
+                    <!-- Expand Item -->
+                    <tr class="item-expand">
+                              <td colspan="12"><div class="collapse" id="collapse1" aria-expanded="false">
+                                  <table class="table-responsive table-striped table-nested">
+                                  <tbody>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox13" value="option13">
+                                          <label for="checkbox13"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Margaret</span> <span class="name last-name">Thatcher</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Sales</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox14" value="option14">
+                                          <label for="checkbox14"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Jessie</span> <span class="name last-name">Constantine Berg</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Sales</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox15" value="option15">
+                                          <label for="checkbox15"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Lester</span> <span class="name last-name">Radeberger-Sanchez</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Sales</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div></td>
+                            </tr>
+                    <tr>
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox16" value="option16">
+                                  <label for="checkbox16"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Upper Management</td>
+                              <td class="col-md count item-collapse">2 people</td>
+                              <td class="options text-right"><div class="btn-popup">
+                                  <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                  <ul class="dropdown-menu dropdown-menu-right">
+                                  <li> <a>User Details</a> </li>
+                                  <li> <a>Change Role</a> </li>
+                                  <li> <a>Unmanage</a> </li>
+                                  <li> <a>Suspend</a> </li>
+                                </ul>
+                                </div></td>
+                            </tr>
+                    
+                    <!-- Collapse Item -->
+                    <tr class="accordion-toggle collapsed" data-toggle="collapse" data-target="#collapse2" aria-expanded="false">
+                              <td class="col-xs selection"><div class="checkbox">
+                                  <input type="checkbox" name="checkbox1" id="checkbox17" value="option17">
+                                  <label for="checkbox17"></label>
+                                </div></td>
+                              <td class="col-xl title item-top item-collapse">Marketing Department</td>
+                              <td class="col-md count item-collapse">4 people</td>
+                              <td class="options text-right"><button type="button" class="btn btn-expand"></button></td>
+                            </tr>
+                    
+                    <!-- Expand Item -->
+                    <tr class="item-expand">
+                              <td colspan="12"><div class="collapse" id="collapse2" aria-expanded="false">
+                                  <table class="table-responsive table-striped table-nested">
+                                  <tbody>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox18" value="option18">
+                                          <label for="checkbox18"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Margaret</span> <span class="name last-name">Thatcher</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Marketing Department</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox19" value="option19">
+                                          <label for="checkbox19"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Jessie</span> <span class="name last-name">Constantine Berg</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Marketing Department</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                      <tr class="manage-item">
+                                      <td class="col-xs selection"><div class="checkbox">
+                                          <input type="checkbox" name="checkbox1" id="checkbox20" value="option20">
+                                          <label for="checkbox20"></label>
+                                        </div></td>
+                                      <td class="col-xxs user-status text-center"><div class="status online"></div></td>
+                                      <td class="col-xl title item-top item-collapse"><span class="name first-name">Lester</span> <span class="name last-name">Radeberger-Sanchez</span></td>
+                                      <td class="col-xl position non-critical item-collapse">Marketing Department</td>
+                                      <td class="col-md account-status item-collapse"><a href="http://prototype.kore.com/#">Active</a></td>
+                                      <td class="col-xl type item-collapse"><a href="http://prototype.kore.com/#">Regular User</a></td>
+                                      <td class="options text-right"><div class="btn-popup">
+                                          <button type="button" class="btn dropdown-toggle fa fa-ellipsis-h" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <ul class="dropdown-menu dropdown-menu-right">
+                                          <li> <a>User Details</a> </li>
+                                          <li> <a>Change Role</a> </li>
+                                          <li> <a>Unmanage</a> </li>
+                                          <li> <a>Suspend</a> </li>
+                                        </ul>
+                                        </div></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div></td>
+                            </tr>
+                  </tbody>
+                        </table>
+                
+                <!-- Table Footer -->
+                <div class="row table-footer">
+                          <div class="col-sm-4 col-xs-12 show-pages pull-left text-xs-left">
+                    <div class="group-box">
+                              <label for="sort" class="sort-title">Show</label>
+                              <div class="dropdown carets">
+                        <select class="form-control">
+                                  <option label="10" value="10">10</option>
+                                  <option label="20" value="20">20</option>
+                                  <option label="50" selected="selected" value="50">50</option>
+                                </select>
+                      </div>
+                            </div>
+                  </div>
+                          
+                          <!-- Table Pagination -->
+                          <ul class="col-sm-8 col-xs-12 pagination table-pagination pull-right text-sm-right text-xs-center">
+                    <li><a href="http://prototype.kore.com/#"><span aria-hidden="true" class="fa fa-angle-double-left"></span></a></li>
+                    <li class="active"><a href="http://prototype.kore.com/#">1</a></li>
+                    <li><a href="http://prototype.kore.com/#">2</a></li>
+                    <li><a href="http://prototype.kore.com/#">3</a></li>
+                    <li class="disabled"><a href="http://prototype.kore.com/#">4</a></li>
+                    <li><a href="http://prototype.kore.com/#">5</a></li>
+                    <li><a href="http://prototype.kore.com/#" class="fa fa-angle-double-right"></a></li>
+                  </ul>
+                        </div>
+              </div>
+                    </div>
+            <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 3px;">
+                      <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+                    </div>
+            <div class="ps-scrollbar-y-rail" style="top: 0px; height: 601px; right: 4px;">
+                      <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 235px;"></div>
+                    </div>
+          </div>
+                </div>
+      </div>
+              
+              <!-- view-sidebar --> 
+              <!-- ngIf: vm.viewSidebar.template && vm.showLayout --> 
+              
+            </section>
+  </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)http://prototype.kore.com/#/admin/user-management -->
+<html data-ng-app="app" ng-strict-di="" class="ng-scope">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="">
+<meta http-equiv="cache-control" content="no-cache">
+
+<!-- ensure proper rendering and touch zooming -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon" sizes="57x57" href="http://prototype.kore.com/content/images/icons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="http://prototype.kore.com/content/images/icons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="http://prototype.kore.com/content/images/icons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="http://prototype.kore.com/content/images/icons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="http://prototype.kore.com/content/images/icons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="http://prototype.kore.com/content/images/icons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="http://prototype.kore.com/content/images/icons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="http://prototype.kore.com/content/images/icons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://prototype.kore.com/content/images/icons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://prototype.kore.com/content/images/icons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://prototype.kore.com/content/images/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="http://prototype.kore.com/content/images/icons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="http://prototype.kore.com/content/images/icons/favicon-16x16.png">
+<link rel="manifest" href="http://prototype.kore.com/content/images/icons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="content/images/icons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="shortcut icon" type="image/x-icon" href="http://prototype.kore.com/content/images/favicon/favicon.ico">
+<title>Kore Prototype 1.2.3</title>
+<style></style>
+<link rel="stylesheet" href="css/vendor.css">
+<link rel="stylesheet" href="css/app.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<div >
+  <div> 
+    
+    <!-- Main Sidebar --> 
+    <!-- ngIf: vm.mainSidebar.template && vm.showLayout && vm.singleView == false --><!-- ngInclude: vm.mainSidebar.template -->
+    <div class="navigation active enterprise-admin" style="">
+      <div class="controller-wrapper ng-scope">
+        <div id="navigation"> 
+          
+          <!-- Hamburger Button -->
+          <div class="navigation-header">Bot Builder</div>
+          
+          <!-- Menu Panel -->
+          <div class="menu-panel">
+            <div class="navigation-overlay"></div>
+            
+            <!-- Panel List -->
+            <div class="panel-list-container ps-container ps-theme-default ps-active-y">
+              <div>
+              <div class="yourBots">Your Bots</div>
+              <div class="createAbot"><a href="index.html">Create a new bot <i class="fa fa-plus"></i></a></div>
+               <!-- <ul class="panel-list ng-scope">
+                  <li class="main-menu"> <a href="#/admin">
+                    <div class="nav-menu-item-wrapper"> <span class="marker"  style="background-image: url(images/monica.png)"></span> <span class="menu-text">Dashboard</span> </div>
+                    </a> </li>
+                </ul>-->
+              </div>
+            </div>
+            
+            <!-- Footer -->
+            <footer class="profile-box-wrapper"> 
+              
+              <!-- Profile Box -->
+              <div class="item-listing"> 
+                
+                <!-- Item -->
+                
+                <div class="item ng-scope ng-isolate-scope">
+                  <div class="profile-photo"> 
+                    
+                    <!-- No Avatar --> 
+                    
+                    <!-- Avatar -->
+                    
+                    <div class="fade-animation user-account avatar ng-scope" style="background-image: url(images/monica.png);"></div>
+                    
+                    <!-- Status -->
+                    <div class="status  online"></div>
+                  </div>
+                </div>
+                
+                <!-- Details -->
+                <div class="details">
+                  <div class="title"> <span class="email ng-binding">monica@kore.com</span> </div>
+                </div>
+              </div>
+              
+              <div class="extras">
+                    <span  class="open-menu"></span>
+                </div>
+              
+              <!-- Profile Info -->
+              <div class="profile-info"> 
+                
+                <!-- Status Message -->
+                <input class="status-message form-control ng-pristine ng-untouched ng-valid">
+                <div class="profile-info-scroll-wrapper ps-container ps-theme-default">
+                  <div ng-transclude=""> 
+                    
+                    <!-- Profile actions -->
+                    <ul class="profile-actions ng-scope">
+                      <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-user"></i></span> <span class="menu-text">Account</span> </a> </li>
+                      <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-question-circle"></i></span> <span class="menu-text">Help</span> </a> </li>
+                      <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-sliders"></i></span> <span class="menu-text">Settings</span> </a> </li>
+                      <li> <a> <span class="profile-icon"><i class="fa fa-fw fa-sign-out"></i></span> <span class="menu-text">Sign Out</span> </a> </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <section id="main-content" class="lg enterprise-admin sidebar-active"> 
+      
+      <!-- Main Header -->
+      
+      <header  id="main-header"  class="header"><!-- Header -->
+        <nav class="navbar ng-scope" role="navigation"> 
+          
+          <!-- Toggle -->
+          <button class="btn navbar-btn btn-navigation active"><i class="fa fa-bars fa-lg"></i></button>
+          
+          <!-- Logo -->
+          <div class="navbar-header pull-left"> <a class="navbar-brand" href="http://prototype.kore.com/#"><img src="images/kore-logo.svg"></a> </div>
+      
+        </nav>
+      </header>
+      
+      <!-- main app view / Routing -->
+      
+      <div id="view-content" class="lg ng-animate-disabled">
+        <div id="user-management" class="ng-scope"> 
+          
+          <!-- Scroll Wrapper -->
+          <div class="scroll-wrapper ps-container ps-theme-default ps-active-y text-center" >
+            <h1>Welcome to Kore Bot Builder </h1>
+            <h3 class="textSlim">Let's build something fantastic! </h3>
+            <p class="cyob">Create your own Bots </p>
+            <p class="textBold">Add tasks to your Bot </p>
+            <p class="textSlim">Publish to yourself or to your company </p>
+            <p>Enjoy! </p>
+            <a class="btn btn-primary createBot"  href="index.html">Create your first Bot </a>
+            <p>Visit our <a>Bot Builder documentation</a> to find out more ...</p>
+          </div>
+          
+          <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Collapsible Group Item #1
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Collapsible Group Item #2
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Collapsible Group Item #3
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
